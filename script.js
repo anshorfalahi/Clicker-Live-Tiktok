@@ -9,8 +9,8 @@ function sendMessageToTab(message) {
         if (msg.action === "start") {
           let delay = msg.delay;
           window.autoLoveInterval = setInterval(() => {
-            let loveButton = document.querySelector(".css-1rleu4k-DivLikeBtnWrapper");
-            if (loveButton) loveButton.click();
+            let loveButtons = document.querySelectorAll('[data-e2e="room-chat-like-btn"]');
+            loveButtons.forEach(button => button.click());
           }, delay);
         } else if (msg.action === "stop") {
           clearInterval(window.autoLoveInterval);
