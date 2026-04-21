@@ -7,13 +7,27 @@ function sendMessageToTab(message) {
       target: { tabId: tabs[0].id },
       func: (msg) => {
         if (msg.action === "start") {
-          let delay = msg.delay;
-          window.autoLoveInterval = setInterval(() => {
+          let baseDelay = msg.delay;
+          window.autoLoveRunning = true;
+
+          function clickWithRandomDelay() {
+            if (!window.autoLoveRunning) return;
+
             let loveButtons = document.querySelectorAll('[data-e2e="room-chat-like-btn"]');
             loveButtons.forEach(button => button.click());
-          }, delay);
+
+            // Tambahkan jitter acak antara -20% dan +20% dari base delay
+            let jitter = baseDelay * 0.2;
+            let randomDelay = baseDelay + (Math.random() * jitter * 2 - jitter);
+
+            window.autoLoveTimeout = setTimeout(clickWithRandomDelay, randomDelay);
+          }
+
+          // Mulai loop
+          clickWithRandomDelay();
         } else if (msg.action === "stop") {
-          clearInterval(window.autoLoveInterval);
+          window.autoLoveRunning = false;
+          clearTimeout(window.autoLoveTimeout);
         }
       },
       args: [message],
