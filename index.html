@@ -10,11 +10,28 @@
 </head>
 <body>
   <div class="container">
-    <h3>Auto Love Button</h3>
-    <label for="delay">Delay (ms):</label>
-    <input type="number" id="delay" value="400" min="100" step="100" />
-    <button id="start">Start</button>
-    <button id="stop" disabled>Stop</button>
+    <h3>Auto Clicker</h3>
+
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-label">Status</span>
+        <span id="status-text" class="stat-value text-red">OFF</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Clicks</span>
+        <span id="click-count" class="stat-value">0</span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="delay">Delay (ms):</label>
+      <input type="number" id="delay" value="400" min="100" step="10" />
+    </div>
+
+    <div class="button-group">
+      <button id="start">Start</button>
+      <button id="stop" disabled>Stop</button>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

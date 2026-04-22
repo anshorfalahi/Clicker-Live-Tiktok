@@ -1,103 +1,148 @@
-/* Styling untuk seluruh popup */
 body {
-    font-family: 'Courier New', Courier, monospace; /* Gaya retro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #1d1e22; /* Latar belakang gelap */
-    color: #ffffff;
+    background: #0f172a; /* Slate 900 */
+    color: #f8fafc; /* Slate 50 */
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 200px;
-    text-align: center;
+    align-items: flex-start;
+    min-height: 100vh;
     box-sizing: border-box;
-  }
-  
-  /* Kontainer utama */
-  .container {
-    background: #333333; /* Kotak gelap */
-    border: 3px solid #ffcc00; /* Garis tegas kuning retro */
-    padding: 20px;
-    width: 300px;
-    margin-top: 50px;
+}
+
+.container {
+    background: #1e293b; /* Slate 800 */
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    width: 320px;
+    margin-top: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #e2e8f0; /* Slate 200 */
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #334155; /* Slate 700 */
+}
+
+/* Stats Layout */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-  }
-  
-  /* Judul */
-  h3 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-    color: #ffcc00; /* Warna judul retro */
+    flex: 1;
+}
+
+.stat-box:first-child {
+    border-right: 1px solid #334155;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #94a3b8; /* Slate 400 */
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 2px solid #ffcc00; /* Garis tegas bawah judul */
-    padding-bottom: 5px;
-  }
-  
-  /* Label untuk input */
-  label {
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.text-green { color: #10b981; } /* Emerald 500 */
+.text-red { color: #ef4444; } /* Red 500 */
+
+/* Form Elements */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
     font-size: 14px;
-    margin: 10px 0 5px 0;
-    color: #cccccc; /* Warna label abu-abu terang */
-    align-self: flex-start;
-  }
-  
-  /* Input delay */
-  input[type="number"] {
+    color: #cbd5e1; /* Slate 300 */
+    font-weight: 500;
+}
+
+input[type="number"] {
     width: 100%;
-    padding: 8px;
-    border: 2px solid #ffcc00; /* Garis tegas kuning */
-    background: #222222; /* Latar belakang kotak input */
-    color: #ffffff;
-    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #475569; /* Slate 600 */
+    border-radius: 6px;
+    background: #0f172a; /* Slate 900 */
+    color: #f8fafc;
+    font-size: 16px;
     box-sizing: border-box;
     outline: none;
-    text-align: center;
-  }
-  
-  /* Tombol umum */
-  button {
-    margin-top: 10px;
-    padding: 10px;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: #3b82f6; /* Blue 500 */
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
     font-size: 14px;
+    font-weight: 600;
     color: #ffffff;
-    border: 2px solid;
-    border-radius: 0; /* Tidak ada sudut bulat */
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    width: 100%;
     box-sizing: border-box;
     text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  /* Tombol Start */
-  button#start {
-    background: #008000; /* Hijau retro */
-    border-color: #006400; /* Hijau tua */
-  }
-  
-  button#start:hover {
-    background: #006400; /* Hijau tua saat hover */
-  }
-  
-  /* Tombol Stop */
-  button#stop {
-    background: #ff0000; /* Merah retro */
-    border-color: #8b0000; /* Merah tua */
-  }
-  
-  button#stop:hover {
-    background: #8b0000; /* Merah tua saat hover */
-  }
-  
-  /* Tombol tidak aktif */
-  button:disabled {
-    background: #555555;
-    border-color: #444444;
-    color: #999999;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+}
+
+button#start {
+    background: #10b981; /* Emerald 500 */
+}
+
+button#start:hover:not(:disabled) {
+    background: #059669; /* Emerald 600 */
+    transform: translateY(-1px);
+}
+
+button#stop {
+    background: #ef4444; /* Red 500 */
+}
+
+button#stop:hover:not(:disabled) {
+    background: #dc2626; /* Red 600 */
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background: #334155; /* Slate 700 */
+    color: #94a3b8; /* Slate 400 */
     cursor: not-allowed;
-  }
-  
+    transform: none;
+}
