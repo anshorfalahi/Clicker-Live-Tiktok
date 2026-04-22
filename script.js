@@ -14,7 +14,19 @@ function sendMessageToTab(message) {
             if (!window.autoLoveRunning) return;
 
             let loveButtons = document.querySelectorAll('[data-e2e="room-chat-like-btn"]');
-            loveButtons.forEach(button => button.click());
+            loveButtons.forEach(button => {
+              // Simulasi event klik yang lebih realistis
+              const events = ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'];
+              events.forEach(eventType => {
+                const event = new MouseEvent(eventType, {
+                  view: window,
+                  bubbles: true,
+                  cancelable: true,
+                  buttons: 1
+                });
+                button.dispatchEvent(event);
+              });
+            });
 
             // Tambahkan jitter acak antara -20% dan +20% dari base delay
             let jitter = baseDelay * 0.2;
